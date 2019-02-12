@@ -2,10 +2,10 @@
 
 namespace SurveyMakerKata
 {
-    public class Campaign
+    public class Campaign : ICampaign
     {
         public int Id { get; set; }
         public int SurveyId { get; set; }
-        public List<SurveyLocations> Adresses { get; set; }
+        public List<ISurveyLocations> Adresses { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SurveyMakerKata
 {
-    public  class SurveyAdress
+    public  class SurveyAdress : ISurveyAdress
     {
         public int Id { get; set; }
         public int NumVoie { get; set; }

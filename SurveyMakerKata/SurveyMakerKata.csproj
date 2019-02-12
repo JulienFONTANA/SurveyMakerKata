@@ -41,14 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Campaign.cs" />
-    <Compile Include="CompletionStatus.cs" />
+    <Compile Include="Data Objects\Campaign.cs" />
+    <Compile Include="Data Objects\CompletionStatus.cs" />
+    <Compile Include="Interfaces\ICampaign.cs" />
+    <Compile Include="Interfaces\ISurvey.cs" />
+    <Compile Include="Interfaces\ISurveyAdress.cs" />
+    <Compile Include="Interfaces\ISurveyLocations.cs" />
+    <Compile Include="Interfaces\ISurveyQuestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Survey.cs" />
-    <Compile Include="SurveyAdress.cs" />
-    <Compile Include="SurveyLocations.cs" />
+    <Compile Include="Data Objects\Survey.cs" />
+    <Compile Include="Data Objects\SurveyAdress.cs" />
+    <Compile Include="Data Objects\SurveyLocations.cs" />
     <Compile Include="SurveyMaker.cs" />
-    <Compile Include="SurveyQuestion.cs" />
+    <Compile Include="Data Objects\SurveyQuestion.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
