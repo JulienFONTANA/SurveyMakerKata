@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SurveyMakerKata
 {
-    public class Class1
+    public class SurveyMaker
     {
+
     }
 }
