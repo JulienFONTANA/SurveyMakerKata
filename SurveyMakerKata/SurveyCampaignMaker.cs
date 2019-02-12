@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace SurveyMakerKata
 {
-    public class SurveyMaker
+    public class SurveyCampaignMaker
     {
-
+        public Campaign CreateNewCampaign()
+        {
+            return null;
+        }
     }
 }

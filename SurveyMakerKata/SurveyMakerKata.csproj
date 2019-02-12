@@ -52,8 +52,8 @@
     <Compile Include="Data Objects\Survey.cs" />
     <Compile Include="Data Objects\SurveyAdress.cs" />
     <Compile Include="Data Objects\SurveyLocations.cs" />
-    <Compile Include="SurveyMaker.cs" />
     <Compile Include="Data Objects\SurveyQuestion.cs" />
+    <Compile Include="SurveyCampaignMaker.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,9 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SurveyMakerKata
 {
     public class Survey : ISurvey
     {
+        public Survey(int id, string summary, string clientName, string clientAdress, List<ISurveyQuestion> questionList)
+        {
+            Id = id;
+            Summary = summary;
+            ClientName = clientName;
+            ClientAdress = clientAdress;
+            QuestionList = questionList;
+        }
+
         public int Id { get; set; }
         public string Summary { get; set; }
         public string ClientName { get; set; }
