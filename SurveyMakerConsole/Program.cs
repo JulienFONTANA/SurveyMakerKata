@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SurveyMakerKata;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace SurveyMakerConsole
     {
         static void Main(string[] args)
         {
+            var surveyCM = new SurveyCampaignMaker();
+            surveyCM.CreateNewCampaign();
         }
     }
 }

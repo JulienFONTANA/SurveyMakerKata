@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SurveyMakerKata\SurveyMakerKata.csproj">
+      <Project>{8915E345-4F8E-4F38-ABBE-0B4AF46FBC03}</Project>
+      <Name>SurveyMakerKata</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

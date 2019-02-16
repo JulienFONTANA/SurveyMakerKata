@@ -5,7 +5,7 @@ namespace SurveyMakerKata
     public interface ICampaign
     {
         int Id { get; set; }
-        int ISurvey { get; set; }
+        ISurvey Survey { get; set; }
         List<ISurveyLocations> Adresses { get; set; }
     }
 }
