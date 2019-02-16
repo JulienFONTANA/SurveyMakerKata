@@ -53,6 +53,7 @@
     <Compile Include="Data Objects\SurveyAdress.cs" />
     <Compile Include="Data Objects\SurveyLocations.cs" />
     <Compile Include="Data Objects\SurveyQuestion.cs" />
+    <Compile Include="QuestionHelper.cs" />
     <Compile Include="SurveyCampaignMaker.cs" />
   </ItemGroup>
   <ItemGroup />

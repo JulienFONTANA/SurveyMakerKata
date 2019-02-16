@@ -5,7 +5,7 @@
         int Id { get; set; }
         string NomVoie { get; set; }
         int NumVoie { get; set; }
-        string CodePostal { get; set; }
-        string Commmune { get; set; }
+        string ZipCode { get; set; }
+        string CityName { get; set; }
     }
 }

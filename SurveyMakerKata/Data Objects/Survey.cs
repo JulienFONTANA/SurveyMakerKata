@@ -14,6 +14,11 @@ namespace SurveyMakerKata
             QuestionList = questionList;
         }
 
+        public Survey(int id)
+        {
+            Id = id;
+        }
+
         public int Id { get; set; }
         public string Summary { get; set; }
         public string ClientName { get; set; }

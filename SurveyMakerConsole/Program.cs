@@ -1,9 +1,7 @@
-﻿using SurveyMakerKata;
+﻿using Newtonsoft.Json;
+using SurveyMakerKata;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace SurveyMakerConsole
 {
@@ -12,7 +10,22 @@ namespace SurveyMakerConsole
         static void Main(string[] args)
         {
             var surveyCM = new SurveyCampaignMaker();
-            surveyCM.CreateNewCampaign();
+            var campaign = surveyCM.CreateNewCampaign();
+
+            var serializer = new JsonSerializer();
+
+            using (StreamWriter file = File.CreateText(@"D:\SurveyOnly.txt"))
+            {
+                serializer.Serialize(file, campaign.Survey);
+            }
+            //using (StreamWriter file = File.CreateText(@"D:\Campaign.txt"))
+            //{
+            //    var tmpCampaign = campaign;
+            //    tmpCampaign.Survey = new Survey(campaign.Survey.Id);
+            //    serializer.Serialize(file, campaign.Survey);
+            //}
+
+            Console.ReadKey();
         }
     }
 }
