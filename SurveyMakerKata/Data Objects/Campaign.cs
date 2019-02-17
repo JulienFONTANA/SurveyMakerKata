@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace SurveyMakerKata
 {
@@ -6,12 +7,16 @@ namespace SurveyMakerKata
     {
         public Campaign(ISurvey survey, List<ISurveyLocations> locations)
         {
+            Id = 1;
             Survey = survey;
             Adresses = locations;
         }
 
         public int Id { get; set; }
-        public ISurvey Survey { get; set; }
+        public int SurveyId { get; set; }
         public List<ISurveyLocations> Adresses { get; set; }
+
+        [JsonIgnore]
+        public ISurvey Survey { get; set; }
     }
 }

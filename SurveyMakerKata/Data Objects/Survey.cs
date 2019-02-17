@@ -5,7 +5,7 @@ namespace SurveyMakerKata
 {
     public class Survey : ISurvey
     {
-        public Survey(int id, string summary, string clientName, string clientAdress, List<ISurveyQuestion> questionList)
+        public Survey(int id, string summary, string clientName, ISurveyAdress clientAdress, List<ISurveyQuestion> questionList)
         {
             Id = id;
             Summary = summary;
@@ -22,7 +22,7 @@ namespace SurveyMakerKata
         public int Id { get; set; }
         public string Summary { get; set; }
         public string ClientName { get; set; }
-        public string ClientAdress { get; set; }
+        public ISurveyAdress ClientAdress { get; set; }
         public List<ISurveyQuestion> QuestionList { get; set; }
     }
 }

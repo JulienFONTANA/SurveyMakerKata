@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using SurveyMakerKata;
-using System;
 using System.IO;
 
 namespace SurveyMakerConsole
@@ -14,18 +13,15 @@ namespace SurveyMakerConsole
 
             var serializer = new JsonSerializer();
 
-            using (StreamWriter file = File.CreateText(@"D:\SurveyOnly.txt"))
+            using (StreamWriter file = File.CreateText(@"D:\Survey.json"))
             {
                 serializer.Serialize(file, campaign.Survey);
             }
-            //using (StreamWriter file = File.CreateText(@"D:\Campaign.txt"))
-            //{
-            //    var tmpCampaign = campaign;
-            //    tmpCampaign.Survey = new Survey(campaign.Survey.Id);
-            //    serializer.Serialize(file, campaign.Survey);
-            //}
 
-            Console.ReadKey();
+            using (StreamWriter file = File.CreateText(@"D:\Campaign.json"))
+            {
+                serializer.Serialize(file, campaign);
+            }
         }
     }
 }
