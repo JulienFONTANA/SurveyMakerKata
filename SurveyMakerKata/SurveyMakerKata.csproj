@@ -51,6 +51,8 @@
     <Compile Include="Interfaces\ISurveyAdress.cs" />
     <Compile Include="Interfaces\ISurveyLocations.cs" />
     <Compile Include="Interfaces\ISurveyQuestion.cs" />
+    <Compile Include="Interfaces\IQuestionHelper.cs" />
+    <Compile Include="Interfaces\ISurveyCampaignMaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data Objects\Survey.cs" />
     <Compile Include="Data Objects\SurveyAdress.cs" />

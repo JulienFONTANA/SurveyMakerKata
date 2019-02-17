@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace SurveyMakerKata
 {
-    public static class QuestionHelper
+    public class QuestionHelper : IQuestionHelper
     {
-        public static string AskQuestion(string question)
+        public string AskQuestion(string question)
         {
             string answer = string.Empty;
             while (answer.Length == 0)
@@ -17,7 +17,7 @@ namespace SurveyMakerKata
             return answer;
         }
 
-        public static bool AskYesNoQuestion(string question)
+        public bool AskYesNoQuestion(string question)
         {
             string answer = null;
             bool yes;
@@ -43,7 +43,7 @@ namespace SurveyMakerKata
             }
         }
 
-        public static string AskOptionalQuestion(string question)
+        public string AskOptionalQuestion(string question)
         {
             string answer = null;
 
@@ -53,14 +53,14 @@ namespace SurveyMakerKata
             return answer.Length == 0 ? string.Empty : answer;
         }
 
-        private static bool IsYesNoQuestionAnswerByYes(string answer)
+        private bool IsYesNoQuestionAnswerByYes(string answer)
         {
             var yesList = new List<string> { "y", "yes", "Y", "Yes", "o", "oui", "O", "Oui" };
 
             return yesList.Contains(answer);
         }
 
-        private static bool IsYesNoQuestionAnswerByNo(string answer)
+        private bool IsYesNoQuestionAnswerByNo(string answer)
         {
             var noList = new List<string> { "n", "no", "N", "No", "non", "Non" };
 
