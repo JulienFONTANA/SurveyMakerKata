@@ -11,8 +11,10 @@ namespace SurveyMakerConsole
         {
             var questionHelper = new QuestionHelper();
             var surveyAdressGetter = new SurveyAdressGetter(questionHelper);
+            var surveyLocationGetter = new SurveyLocationGetter(questionHelper, surveyAdressGetter);
+            var surveyQuestionGetter = new SurveyQuestionGetter(questionHelper, surveyAdressGetter);
 
-            var surveyCM = new SurveyCampaignMaker(questionHelper, surveyAdressGetter);
+            var surveyCM = new SurveyCampaignMaker(questionHelper, surveyLocationGetter, surveyQuestionGetter);
             var campaign = surveyCM.CreateNewCampaign();
 
             var serializer = new JsonSerializer();

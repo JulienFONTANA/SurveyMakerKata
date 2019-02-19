@@ -54,6 +54,8 @@
     <Compile Include="Interfaces\IQuestionHelper.cs" />
     <Compile Include="Interfaces\ISurveyCampaignMaker.cs" />
     <Compile Include="Interfaces\ISurveyAdressGetter.cs" />
+    <Compile Include="Interfaces\ISurveyLocationGetter.cs" />
+    <Compile Include="Interfaces\ISurveyQuestionGetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data Objects\Survey.cs" />
     <Compile Include="Data Objects\SurveyAdress.cs" />
@@ -62,6 +64,8 @@
     <Compile Include="QuestionHelper.cs" />
     <Compile Include="SurveyAdressGetter.cs" />
     <Compile Include="SurveyCampaignMaker.cs" />
+    <Compile Include="SurveyLocationGetter.cs" />
+    <Compile Include="SurveyQuestionGetter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

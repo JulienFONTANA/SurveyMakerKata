@@ -6,13 +6,16 @@ namespace SurveyMakerKata
     public class SurveyCampaignMaker : ISurveyCampaignMaker
     {
         private readonly IQuestionHelper _questionHelper;
-        private readonly ISurveyAdressGetter _surveyAdressGetter;
+        private readonly ISurveyLocationGetter _surveyLocationGetter;
+        private readonly ISurveyQuestionGetter _surveyQuestionGetter;
 
         public SurveyCampaignMaker(IQuestionHelper questionHelper, 
-            ISurveyAdressGetter surveyAdressGetter)
+            ISurveyLocationGetter surveyLocationGetter,
+            ISurveyQuestionGetter surveyQuestionGetter)
         {
             _questionHelper = questionHelper;
-            _surveyAdressGetter = surveyAdressGetter;
+            _surveyLocationGetter = surveyLocationGetter;
+            _surveyQuestionGetter = surveyQuestionGetter;
         }
 
         public Campaign CreateNewCampaign()
@@ -23,33 +26,9 @@ namespace SurveyMakerKata
             if (answer)
             {
                 Console.WriteLine("Ok, let's make a survey.");
-                var surveySummary = _questionHelper.AskOptionalQuestion("What is your survey summary ?");
-                var surveyClientName = _questionHelper.AskQuestion("What is your client name ?");
-                var surveyClientAdress = _surveyAdressGetter.GetSurveyAdress(123, isClientAdress: true);
 
-                var questionList = new List<ISurveyQuestion>();
-                do
-                {
-                    var question = _questionHelper.AskQuestion("What question do you want to ask ?");
-                    var surveyQuestion = new SurveyQuestion
-                    {
-                        Question = question,
-                        Id = questionList.Count + 1
-                    };
-
-                    questionList.Add(surveyQuestion);
-                } while (questionList.Count < 10 && _questionHelper.AskYesNoQuestion("Do you want to add another question ?"));
-
-                var survey = new Survey(100, surveySummary, surveyClientName, surveyClientAdress, questionList);
-
-                var locationList = new List<ISurveyLocations>();
-                do
-                {
-                    var surveyLocation = new SurveyLocations(locationList.Count + 100, _surveyAdressGetter.GetSurveyAdress(locationList.Count + 45), CompletionStatus.TODO);
-                    locationList.Add(surveyLocation);
-                } while (locationList.Count < 4 && _questionHelper.AskYesNoQuestion("Do you want to add another survey location ?"));
-
-                Console.WriteLine("Survey campaign created !");
+                var survey = _surveyQuestionGetter.GetSurveyQuestion();
+                var locationList = _surveyLocationGetter.GetSurveyLocation();
 
                 return new Campaign(survey, locationList)
                 {
