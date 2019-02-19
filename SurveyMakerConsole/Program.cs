@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SurveyMakerKata;
+using System;
 using System.IO;
 
 namespace SurveyMakerConsole
@@ -8,7 +9,8 @@ namespace SurveyMakerConsole
     {
         static void Main(string[] args)
         {
-            var surveyCM = new SurveyCampaignMaker();
+            var questionHelper = new QuestionHelper();
+            var surveyCM = new SurveyCampaignMaker(questionHelper);
             var campaign = surveyCM.CreateNewCampaign();
 
             var serializer = new JsonSerializer();
@@ -22,6 +24,8 @@ namespace SurveyMakerConsole
             {
                 serializer.Serialize(file, campaign);
             }
+
+            Console.WriteLine("Survey exported to JSON format !");
         }
     }
 }

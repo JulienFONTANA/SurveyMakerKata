@@ -5,24 +5,29 @@ namespace SurveyMakerKata
 {
     public class SurveyCampaignMaker : ISurveyCampaignMaker
     {
-        private readonly IQuestionHelper questionHelper = new QuestionHelper();
+        private readonly IQuestionHelper _questionHelper;
+
+        public SurveyCampaignMaker(IQuestionHelper questionHelper)
+        {
+            _questionHelper = questionHelper;
+        }
 
         public Campaign CreateNewCampaign()
         {
             Console.WriteLine("Welcome in the survey campaign maker.");
 
-            var answer = questionHelper.AskYesNoQuestion("Would you like to create a new survey campaign ?");
+            var answer = _questionHelper.AskYesNoQuestion("Would you like to create a new survey campaign ?");
             if (answer)
             {
                 Console.WriteLine("Ok, let's make a survey.");
-                var surveySummary = questionHelper.AskOptionalQuestion("What is your survey summary ?");
-                var surveyClientName = questionHelper.AskQuestion("What is your client name ?");
+                var surveySummary = _questionHelper.AskOptionalQuestion("What is your survey summary ?");
+                var surveyClientName = _questionHelper.AskQuestion("What is your client name ?");
                 var surveyClientAdress = GetSurveyAdress(123, isClientAdress: true);
 
                 var questionList = new List<ISurveyQuestion>();
                 do
                 {
-                    var question = questionHelper.AskQuestion("What question do you want to ask ?");
+                    var question = _questionHelper.AskQuestion("What question do you want to ask ?");
                     var surveyQuestion = new SurveyQuestion
                     {
                         Question = question,
@@ -30,7 +35,7 @@ namespace SurveyMakerKata
                     };
 
                     questionList.Add(surveyQuestion);
-                } while (questionList.Count < 10 && questionHelper.AskYesNoQuestion("Do you want to add another question ?"));
+                } while (questionList.Count < 10 && _questionHelper.AskYesNoQuestion("Do you want to add another question ?"));
 
                 var survey = new Survey(100, surveySummary, surveyClientName, surveyClientAdress, questionList);
 
@@ -39,7 +44,7 @@ namespace SurveyMakerKata
                 {
                     var surveyLocation = new SurveyLocations(locationList.Count + 100, GetSurveyAdress(locationList.Count + 45), CompletionStatus.TODO);
                     locationList.Add(surveyLocation);
-                } while (locationList.Count < 4 && questionHelper.AskYesNoQuestion("Do you want to add another survey location ?"));
+                } while (locationList.Count < 4 && _questionHelper.AskYesNoQuestion("Do you want to add another survey location ?"));
 
                 Console.WriteLine("Survey campaign created !");
 
@@ -75,12 +80,12 @@ namespace SurveyMakerKata
         {
             var firstQuestion = isClientAdress ? "Where does the client lives ? " : "Where would you like to ask questions ? ";
 
-            var numVoieStr = questionHelper.AskQuestion(firstQuestion + "Give street number :");
+            var numVoieStr = _questionHelper.AskQuestion(firstQuestion + "Give street number :");
             int.TryParse(numVoieStr, out int numVoie);
 
-            var nomVoie = questionHelper.AskQuestion("Where would you like to ask questions ? Give street name :");
-            var zipCode = questionHelper.AskQuestion("Where would you like to ask questions ? Give zip code :");
-            var city = questionHelper.AskQuestion("Where would you like to ask questions ? Give city name :");
+            var nomVoie = _questionHelper.AskQuestion("Where would you like to ask questions ? Give street name :");
+            var zipCode = _questionHelper.AskQuestion("Where would you like to ask questions ? Give zip code :");
+            var city = _questionHelper.AskQuestion("Where would you like to ask questions ? Give city name :");
 
             return new SurveyAdress(id, numVoie, nomVoie, zipCode, city);
         }
