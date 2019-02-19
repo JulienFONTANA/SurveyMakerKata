@@ -1,34 +1,39 @@
 # SurveyMakerKata
 
-## Pourquoi ce Kata?
-Ce Kata à été créé à l'occasion du Meet-Up: "Apréro Tech #5"
-Il sert de base à une reflexion sur le refactoring de code legacy.
+## Why this Kata?
+This Kata was created for the meetup : Apéro Tech #5
+It is a base to ask the question : "How to refactor legacy code properly?"
 
-### Le code est immonde!
-En effet. C'est le but! Identifier les problème de dette technique qu'on trouverai typiquement dans du code legacy, et les corriger du mieux possible!
+### Some commits are ugly!
+Yep, it's made on purpose. The goal is to identify what to do to refator this code properly.
 
-### Et comment faire ?
-Il faut procéder par étapes :
-* Lire le code
-* Ajouter des Tests Unitaires avec NUnit et NFluent
-* Refactorer le code par petites itérations régulières
-* Et recommencer !
+# And what are those steps ?
+Here are the steps :
+* Lanch the app
+* Read the code
+* Add some unit tests with NUnit, NFluent and NSubstitute
+* Refactor small parts of the code once they are tested
+* Lauch the code to ensure behaviour stays the same
+* Commit often, when unit tests are green and code compiles
+* Do it over and over agin, until code is clean
 
-## Pourquoi en C#.NET ?
-Le C# est mon language de prédilection ! Alors quitte à présenter du code, autant le faire dans un language auquel je suis à l'aise !
+### Why using C#.NET ?
+C# is my main coding language. As I created this code for a meetup, better be confident about my code right?
 
-### Que faut il pour utiliser se Kata?
-Je me suis limité à l'utilisation de librairies simples et disponibles gratuitement, comme NUnit et NFluent.
+## And what do I need to use this Kata ?
+You need Visual Studio, NUnit, NFlent, NSubstitute, and the base libraries ! 
 
-## Ai-je le droit de cloner / modifier ce repo?
-Bien sûr ! Il est la pour s'entrainer !
+## Can I clone this repo?
+Sure! It was made for training purposes.
 
-### Quel ont été les étapes de refactorisation de ce code ?
+### What where your steps in the refactoring process ?
 
-Hash du commit	| Commentaire
-ad338c3a61		| Base du code, classes peu ou pas interfacés, principes SOLID non respecté.
-158e6b3d01		| Ecriture en JSON, création du QuestionHelper pour sortir les traitement des questions du code principal
-f8867b3a06		| Plus d'interfaces, QuestionHelper n'est plus une classe statique et peu être mocké
-				| Ecriture de deux fichiers JSON pour matcher la demande de KONG
-7eab7c42db		| Ajout de tests, ce qui aurait dû être la première étape de cette refactorisation...
-73098b972d		| Ajout des dernières classes, séparation du code et tests. Refactorisation terminée.
+- __ad338c3a61__ -> Base for this project, ugly code, almost no interfaces, SOLID principle are baffled... We need to refactor this.
+- __158e6b3d01__ -> Code output in JSON, first helper, main class starting to be cut into smaller pieces
+- __f8867b3a06__ ->  More interfaces. Removed static class, my bad. QuestionHelper can now be mocked ! Now writing two separate JSON files. 
+- __7eab7c42db__ -> Added more tests, this should have been the first step... 
+- __73098b972d__ -> Added final classes, code is now properly tested and separated into smaller classes. Refactoring done, code can be improved
+
+Branches :
+(__before-refacto__) -> Use this as base to work
+(__master__) -> this branch was clean and refactor already. It is one way to do it, maybe not the best one ;)
