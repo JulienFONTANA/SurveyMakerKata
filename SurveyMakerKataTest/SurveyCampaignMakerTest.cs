@@ -10,19 +10,32 @@ namespace SurveyMakerKataTest
     {
         public ISurveyCampaignMaker surveyCampaignMaker;
         public IQuestionHelper questionHelper;
+        public ISurveyAdressGetter surveyAdressGetter;
+
+        public SurveyAdress ExpectedSurveyAdress { get; set; }
 
         [SetUp]
         public void SetUp()
         {
-            questionHelper = Substitute.For<IQuestionHelper>();
+            ExpectedSurveyAdress = new SurveyAdress(123, 7, "rue de Rivoli", "75000", "Paris");
 
+            questionHelper = Substitute.For<IQuestionHelper>();
             questionHelper.AskQuestion(Arg.Any<string>()).Returns("AnswerToAskQuestion");
             questionHelper.AskOptionalQuestion(Arg.Any<string>()).Returns("AnswerToAskOptionalQuestion");
             questionHelper.AskYesNoQuestion(Arg.Any<string>()).Returns(true);
 
-            var surveyAdressGetter = Substitute.For<ISurveyAdressGetter>();
+            surveyAdressGetter = Substitute.For<ISurveyAdressGetter>();
+            surveyAdressGetter.GetSurveyAdress(Arg.Any<int>(), true).Returns(ExpectedSurveyAdress);
 
             surveyCampaignMaker = new SurveyCampaignMaker(questionHelper, surveyAdressGetter);
+        }
+
+        [Test]
+        public void Should_Return_Expected_Adress_When_SurveyAdressGetter_Method_Is_Called()
+        {
+            var actual = surveyCampaignMaker.CreateNewCampaign();
+
+            Check.That(actual.Survey.ClientAdress).HasFieldsWithSameValues(ExpectedSurveyAdress);
         }
 
         [Test]
@@ -47,6 +60,14 @@ namespace SurveyMakerKataTest
             surveyCampaignMaker.CreateNewCampaign();
 
             Check.That(questionHelper.Received().AskYesNoQuestion(Arg.Any<string>()));
+        }
+
+        [Test]
+        public void Should_Call_GetSurveyAdress_Method()
+        {
+            surveyCampaignMaker.CreateNewCampaign();
+
+            Check.That(surveyAdressGetter.Received().GetSurveyAdress(123, true));
         }
     }
 }
