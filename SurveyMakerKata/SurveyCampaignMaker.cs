@@ -9,7 +9,7 @@ namespace SurveyMakerKata
         private readonly ISurveyLocationGetter _surveyLocationGetter;
         private readonly ISurveyQuestionGetter _surveyQuestionGetter;
 
-        public SurveyCampaignMaker(IQuestionHelper questionHelper, 
+        public SurveyCampaignMaker(IQuestionHelper questionHelper,
             ISurveyLocationGetter surveyLocationGetter,
             ISurveyQuestionGetter surveyQuestionGetter)
         {
@@ -55,7 +55,7 @@ namespace SurveyMakerKata
                         new SurveyQuestion { Id = 3, Question = "Do you like all cakes ?"}
                 }),
                 new List<ISurveyLocations> {
-                        new SurveyLocations(456, new SurveyAdress(7, 7, "rue de Rivoli", "75005", "Paris"), CompletionStatus.In_Progress),
+                        new SurveyLocations(456, new SurveyAdress(7, 7, "rue de Rivoli", "75005", "Paris"), CompletionStatus.TODO),
                         new SurveyLocations(457, new SurveyAdress(8, 115, "rue de Tolbiac", "75013", "Paris"), CompletionStatus.In_Progress),
                 })
             {

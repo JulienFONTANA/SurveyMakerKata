@@ -22,3 +22,13 @@ Je me suis limité à l'utilisation de librairies simples et disponibles gratuit
 
 ## Ai-je le droit de cloner / modifier ce repo?
 Bien sûr ! Il est la pour s'entrainer !
+
+### Quel ont été les étapes de refactorisation de ce code ?
+
+Hash du commit	| Commentaire
+ad338c3a61		| Base du code, classes peu ou pas interfacés, principes SOLID non respecté.
+158e6b3d01		| Ecriture en JSON, création du QuestionHelper pour sortir les traitement des questions du code principal
+f8867b3a06		| Plus d'interfaces, QuestionHelper n'est plus une classe statique et peu être mocké
+				| Ecriture de deux fichiers JSON pour matcher la demande de KONG
+7eab7c42db		| Ajout de tests, ce qui aurait dû être la première étape de cette refactorisation...
+73098b972d		| Ajout des dernières classes, séparation du code et tests. Refactorisation terminée.
