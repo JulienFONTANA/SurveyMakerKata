@@ -8,19 +8,21 @@ namespace SurveyMakerKataTest
     [TestFixture]
     public class SurveyCampaignMakerTest
     {
-        public IQuestionHelper questionHelper;
         public ISurveyCampaignMaker surveyCampaignMaker;
+        public IQuestionHelper questionHelper;
 
         [SetUp]
         public void SetUp()
         {
             questionHelper = Substitute.For<IQuestionHelper>();
 
-            questionHelper.AskQuestion(Arg.Any<string>()).Returns("AswerToAskQuestion");
-            questionHelper.AskOptionalQuestion(Arg.Any<string>()).Returns("AswerToAskOptionalQuestion");
+            questionHelper.AskQuestion(Arg.Any<string>()).Returns("AnswerToAskQuestion");
+            questionHelper.AskOptionalQuestion(Arg.Any<string>()).Returns("AnswerToAskOptionalQuestion");
             questionHelper.AskYesNoQuestion(Arg.Any<string>()).Returns(true);
 
-            surveyCampaignMaker = new SurveyCampaignMaker(questionHelper);
+            var surveyAdressGetter = Substitute.For<ISurveyAdressGetter>();
+
+            surveyCampaignMaker = new SurveyCampaignMaker(questionHelper, surveyAdressGetter);
         }
 
         [Test]

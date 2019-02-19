@@ -10,17 +10,19 @@ namespace SurveyMakerConsole
         static void Main(string[] args)
         {
             var questionHelper = new QuestionHelper();
-            var surveyCM = new SurveyCampaignMaker(questionHelper);
+            var surveyAdressGetter = new SurveyAdressGetter(questionHelper);
+
+            var surveyCM = new SurveyCampaignMaker(questionHelper, surveyAdressGetter);
             var campaign = surveyCM.CreateNewCampaign();
 
             var serializer = new JsonSerializer();
 
-            using (StreamWriter file = File.CreateText(@"D:\Survey.json"))
+            using (StreamWriter file = File.CreateText(@"C:\Users\jfont\Source\Repos\SurveyMakerKata\SurveyMakerConsole\output\Survey.json"))
             {
                 serializer.Serialize(file, campaign.Survey);
             }
 
-            using (StreamWriter file = File.CreateText(@"D:\Campaign.json"))
+            using (StreamWriter file = File.CreateText(@"C:\Users\jfont\Source\Repos\SurveyMakerKata\SurveyMakerConsole\output\Campaign.json"))
             {
                 serializer.Serialize(file, campaign);
             }

@@ -1,0 +1,28 @@
+{
+  "Id": 1,
+  "SurveyId": 100,
+  "Adresses": [
+    {
+      "Id": 456,
+      "Adress": {
+        "Id": 7,
+        "NumVoie": 7,
+        "NomVoie": "rue de Rivoli",
+        "ZipCode": "75005",
+        "CityName": "Paris"
+      },
+      "Status": 1
+    },
+    {
+      "Id": 456,
+      "Adress": {
+        "Id": 8,
+        "NumVoie": 115,
+        "NomVoie": "rue de Tolbiac",
+        "ZipCode": "75013",
+        "CityName": "Paris"
+      },
+      "Status": 1
+    }
+  ]
+}
